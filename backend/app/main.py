@@ -3,7 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from app.database import engine, Base
 from app import models
-from app.routers import auth, jobs
+from app.routers import auth, jobs, resumes
+from app.routers import auth, jobs, resumes, applications
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -18,6 +20,9 @@ app.add_middleware(
 
 app.include_router(auth.router)
 app.include_router(jobs.router)
+app.include_router(resumes.router)
+app.include_router(applications.router)
+
 
 @app.get("/health")
 def health():
