@@ -57,3 +57,13 @@ class ApplicationOut(BaseModel):
 class ApplicationResult(ApplicationOut):
     matched_skills: list[str] = []
     missing_skills: list[str] = []
+
+class RankedCandidate(BaseModel):
+    rank: int
+    application_id: int
+    candidate_name: str
+    candidate_email: str
+    match_score: float
+    interview_score: float | None = None
+    final_score: float
+    status: str
